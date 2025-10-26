@@ -1,6 +1,6 @@
 const fs = require("fs")
 
-const filePath = "../3-Assets/lengthyFile.txt"
+const filePath = "../3-Assets/long-doc.txt"
 
 const start = Date.now()
 
