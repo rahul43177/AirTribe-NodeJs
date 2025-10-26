@@ -1,6 +1,6 @@
 const fs = require("fs")
 
-const filePath = "../3-Assets/long-doc.txt"
+const filePath = "/Users/rahulmishra/Desktop/learning/AirTribe-NodeJs/S1-Introduction/Assets/long-doc.txt"
 
 const start = Date.now()
 
