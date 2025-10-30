@@ -90,12 +90,25 @@ function readFileSyncWriteFileAsync() {
             console.log("\n")
         }
     })
-
-
-
-    
 }
 
+function readFileAsyncWriteFileSync() {
+    console.log(`STEP 1 : READING STARTING`)
+    fs.readFile(inputPath , {encoding : 'utf-8'} , (err , data)=> {
+        if(err){
+            console.log(`error in reading file. :${err.message}`)
+        } else {
+            //No Error
+            console.log(`STEP 2 : READING IS DONE.`)
+            console.log("\n")
+            console.log("-".repeat(100))
+            console.log("\n")
+            console.log(`STEP 3 : WRITING FILE IN SYNC`)
+            fs.writeFileSync(outputPath , data , {encoding : 'utf-8'})
+            console.log(`STEP 4 : WRITING DONE `)
+        }
+    })
+}
 //SCRIPT CALLING  - UNCOMMENT TO CALL WHATEVER SCRIPT YOU WANT TO RUN
 
 //SCRIPT 1 - READ AND WRITE SYNCHRONOUSLY
@@ -107,3 +120,7 @@ function readFileSyncWriteFileAsync() {
 // 3. Read the file Synchronously and write the file asynchronously
 //SCRIPT 3 - READ FILE SYNC AND WRITE FILE ASYNC
 readFileSyncWriteFileAsync()
+
+
+//4. Read the file Asynchronously and write the file synchronously
+readFileAsyncWriteFileSync()
