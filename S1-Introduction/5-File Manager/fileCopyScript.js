@@ -1,8 +1,7 @@
-const { Console } = require("console")
 const fs = require("fs")
 
 /*
-SOURCE FOLDER NAME 
+SOURCE FOLDER NAME  
 DESTINATION FOLDER NAME 
 NAME OF THE FILE : input.txt
 
@@ -35,6 +34,9 @@ function readWriteFileSynchronously() {
         console.log("=".repeat(100))
         console.log("\n")
         console.log("STEP 4 -> WRITING FILE STARTING")
+        if(!outputPath.endsWith(".txt")) {
+            throw new TypeError("The file can be only of text format")
+        }
         const writing = fs.writeFileSync(outputPath, data, 'utf-8');
         console.log("STEP 5 -> WRITING FILE COMPLETED")
         console.log("\n")
@@ -45,7 +47,7 @@ function readWriteFileSynchronously() {
     }
 }
 
-function readWriteFileASynchronously() {
+function readWriteFileAsynchronously() {
     console.log("STEP 1 : STARTING READING THE FILE ")
     fs.readFile(inputPath, { encoding: 'utf-8' }, (error, fileData) => {
         if (error) {
@@ -56,6 +58,9 @@ function readWriteFileASynchronously() {
             console.log("\n")
             console.log("=".repeat(100))
             console.log("STEP 4 -> WRITING THE FILE")
+            if(!outputPath.endsWith('.txt')) {
+                throw new TypeError("The file can only be of text format.")
+            }
             fs.writeFile(outputPath , fileData , {encoding : 'utf-8'} , (error , data ) => {
                 if(error) {
                     console.log(`Error file writing the file : ${error.message}`)
@@ -69,7 +74,27 @@ function readWriteFileASynchronously() {
     })
 }
 
+function readFileSyncWriteFileAsync() {
+    console.log("STEP 1 : READING FILE SYNCHROUNOUSLY")
+    const data = fs.readFileSync(inputPath , {encoding : 'utf-8'} )
+    console.log("STEP 2 : FILE READING IS COMPLETED")
+    console.log("\n")
+    console.log("-".repeat(100))
+    console.log("\n")
+    console.log("STEP 3 : FILE WRITING STARTED")
+    fs.writeFile(outputPath , data , (error) => {
+        if(error) {
+            console.log("There is some error in reading file.")
+        } else {
+            console.log(`STEP 4 : WRITING FILE COMPLETED.`)
+            console.log("\n")
+        }
+    })
 
+
+
+    
+}
 
 //SCRIPT CALLING  - UNCOMMENT TO CALL WHATEVER SCRIPT YOU WANT TO RUN
 
@@ -77,4 +102,8 @@ function readWriteFileASynchronously() {
 // readWriteFileSynchronously()
 
 //SCRIPT 2 - READ AND WRITE ASYNCHRONOUSLY
-readWriteFileASynchronously()
+// readWriteFileAsynchronously()
+
+// 3. Read the file Synchronously and write the file asynchronously
+//SCRIPT 3 - READ FILE SYNC AND WRITE FILE ASYNC
+readFileSyncWriteFileAsync()
