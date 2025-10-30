@@ -1,0 +1,1 @@
+I am writing a script which would be copied from one directory to another directory. 
