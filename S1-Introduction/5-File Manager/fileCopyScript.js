@@ -1,3 +1,4 @@
+const { Console } = require("console")
 const fs = require("fs")
 
 /*
@@ -18,16 +19,16 @@ Input directory -> /Users/rahulmishra/Desktop/learning/AirTribe-NodeJs/S1-Introd
 
 Output directory -> /Users/rahulmishra/Desktop/learning/AirTribe-NodeJs/S1-Introduction/5-File Manager/directory-2/output.txt
 */
-const InputPath = "/Users/rahulmishra/Desktop/learning/AirTribe-NodeJs/S1-Introduction/5-File Manager/directory-1/input.txt"
+const inputPath = "/Users/rahulmishra/Desktop/learning/AirTribe-NodeJs/S1-Introduction/5-File Manager/directory-1/input.txt"
 const outputPath = "/Users/rahulmishra/Desktop/learning/AirTribe-NodeJs/S1-Introduction/5-File Manager/directory-2/output.txt"
 
 //first script to read the file syncronously and write syncronously
-function readWriteFileSyncronously() {
+function readWriteFileSynchronously() {
     try {
         console.log(`SCRIPT NAME : Read and Write the file Syncronously`)
         console.log("\n")
         console.log(`STEP 1 -> READING FILE STARTING`)
-        const data = fs.readFileSync(InputPath, { encoding: 'utf-8' });
+        const data = fs.readFileSync(inputPath, { encoding: 'utf-8' });
         console.log(`STEP 2 -> The data is : ----| ${data}`)
         console.log(`STEP 3 -> READING FILE COMPLETED`)
         console.log("\n")
@@ -44,5 +45,36 @@ function readWriteFileSyncronously() {
     }
 }
 
-readWriteFileSyncronously()
+function readWriteFileASynchronously() {
+    console.log("STEP 1 : STARTING READING THE FILE ")
+    fs.readFile(inputPath, { encoding: 'utf-8' }, (error, fileData) => {
+        if (error) {
+            console.log("Error file reading file", error.message);
+        } else {
+            console.log(`STEP 2 -> The data is : ----| ${fileData}`)
+            console.log(`STEP 3 -> READING FILE COMPLETED ASYNCHRONOUSLY`)
+            console.log("\n")
+            console.log("=".repeat(100))
+            console.log("STEP 4 -> WRITING THE FILE")
+            fs.writeFile(outputPath , fileData , {encoding : 'utf-8'} , (error , data ) => {
+                if(error) {
+                    console.log(`Error file writing the file : ${error.message}`)
+                } else {
+                    console.log("STEP 5 -> WRITING FILE IS DONE.")
+                    console.log("\n")
+                    console.log("SCRIPT FINISHED")
+                }
+            })
+        }
+    })
+}
 
+
+
+//SCRIPT CALLING  - UNCOMMENT TO CALL WHATEVER SCRIPT YOU WANT TO RUN
+
+//SCRIPT 1 - READ AND WRITE SYNCHRONOUSLY
+// readWriteFileSynchronously()
+
+//SCRIPT 2 - READ AND WRITE ASYNCHRONOUSLY
+readWriteFileASynchronously()
