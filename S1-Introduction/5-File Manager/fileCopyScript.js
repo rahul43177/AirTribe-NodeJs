@@ -37,7 +37,7 @@ function readWriteFileSynchronously() {
         if(!outputPath.endsWith(".txt")) {
             throw new TypeError("The file can be only of text format")
         }
-        const writing = fs.writeFileSync(outputPath, data, 'utf-8');
+        fs.writeFileSync(outputPath, data, 'utf-8');
         console.log("STEP 5 -> WRITING FILE COMPLETED")
         console.log("\n")
         console.log("SCRIPT FINISHED")
