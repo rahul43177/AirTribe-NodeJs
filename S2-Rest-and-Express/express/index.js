@@ -1,14 +1,17 @@
 const express = require("express")
-const router = require("./router")
-const app = express()
-const PORT = 3000
-
-
+const app  = express()
+const PORT = 3000;
 app.use(express.json())
-app.use("/" , router)
 
-app.listen(PORT , () => {
-    console.log(`The server is running on the PORT : ${PORT}`)
+app.get("/" , (req,res) => {
+    console.log(`The thing is fine`)
 })
 
+app.listen(PORT , (error) => {
+    if(!error) {
+        console.log(`The server is running on the PORT : ${PORT}`)
+    } else {
+        console.log(error);
+    }
+})
 
