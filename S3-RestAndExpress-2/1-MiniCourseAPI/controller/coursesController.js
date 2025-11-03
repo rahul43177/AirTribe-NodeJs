@@ -1,13 +1,13 @@
 const coursesDB = [
     {
         id: 1,
-        courseName: "Backend Course",
+        courseName: "NodeJs Course",
         courseDescription: "Master the backend",
         category: "backend"
     },
     {
         id: 2,
-        courseName: "Frontend Course",
+        courseName: "ReactJs Course",
         courseDescription: "Master the frontend",
         category: "frontend"
     },
@@ -154,10 +154,45 @@ const addCourseInDB = async (req, res) => {
     }
 }
 
+const updateCourses = async (req , res) => {
+    try {
+        const {courseName  , courseDescription , category} = req.body ; 
+        const {id} = req.params ; 
+
+        coursesDB.forEach((course) => {
+            if(course.id == id) {
+                if(courseName ) {
+                    course.courseName  = courseName; 
+                } else if(courseDescription) {
+                    course.courseDescription = courseDescription ; 
+                } else if(category) {
+                    course.category = category; 
+                }
+            }
+        })
+        const updatedCourse = coursesDB.filter(course  => course.id == id); 
+
+        return res.status(200).json({
+            status : true , 
+            message : "The course data is updated successfully" , 
+            updatedCourse  , 
+            allCourse : coursesDB 
+        })
+
+
+    } catch(error) {
+        console.log(error);
+        return res.status(500).json({
+            status : false , 
+            errorMessage : error 
+        })
+    }
+}
 
 
 module.exports = {
     getCoursesByCategory,
     getCourseById,
-    addCourseInDB
+    addCourseInDB , 
+    updateCourses
 }
