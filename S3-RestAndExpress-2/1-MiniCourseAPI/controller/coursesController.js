@@ -1,7 +1,6 @@
 const coursesDB = require("../models/courseModel")
 
 const getCoursesByCategory = async (req, res) => {
-  console.log("coursesDB" , coursesDB)
   try { 
     const { category } = req.query;
     if (!category) {
@@ -35,7 +34,6 @@ const getCourseById = async (req, res) => {
         status: false,
         message: "Id is not provided",
       });
-    console.log(`course DB --- ${coursesDB}`);
     const filteredData = coursesDB.filter((singleCourse) => {
       return singleCourse.id == id;
     });
