@@ -1,7 +1,9 @@
+require("dotenv").config();
 const express = require("express")
 const app = express()
 const courseRouter  = require("./routes/courseRouter")
-const PORT = 3000; 
+const PORT = process.env.PORT
+console.log(`PORT is : ${PORT}`) 
 app.use(express.json())
 
 
