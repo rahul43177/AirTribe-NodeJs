@@ -22,4 +22,6 @@ router.put("/update-course/:id", updateCourses);
 
 //delete the course 
 router.delete("/delete-course/:id" , deleteCourse);
+
+
 module.exports = router;
