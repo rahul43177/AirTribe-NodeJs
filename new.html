@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Basic JS demo</h1>
+        <input id="name" type="text" placeholder="Enter your name">
+        <button id="greet">Greet</button>
+        <pre id="output" aria-live="polite"></pre>
+    </div>
+
+    <script>
+        const GITHUB_API = "https://api.github.com/users/rahul43177";
+        debugger; 
+        const userDetails = fetch(GITHUB_API);
+        console.log(userDetails);
+    </script>
+</body>
+</html>
