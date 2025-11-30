@@ -33,16 +33,27 @@
 
 
 
-const asyncFunction = () => {
-    setTimeout(() => {
-        console.log("In between"); 
-    }, 1 * 1000)
-}
+// const asyncFunction = () => {
+//     setTimeout(() => {
+//         console.log("In between"); 
+//     }, 1 * 1000)
+// }
 
-const main = () => {
-    console.log("start")
+// const main = () => {
+//     console.log("start")
 
-    asyncFunction();
+//     asyncFunction();
 
-    console.log("End");
-}
+//     console.log("End");
+// }
+
+// main();
+
+
+// to make it 
+// start 
+// in between 
+// end
+// We need to use something called callback functions 
+
+
