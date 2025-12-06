@@ -38,6 +38,13 @@ const usersDataBase = [
     password: '$2b$10$6aQlEUUSh1NgygKDYh9kEeTSwywqMnO02lOKMH62/066MgorVhQRu', //i 
 
     role: 'user'
+  } ,
+  {
+    id: 6,
+    name: 'Anshul Kumar',
+    email: 'anshul@gmail.com',
+    password: '$2b$10$MdrYi3lVDeVfjfPok22rSuJOhQdfnyCU7Lu.5wiJpEp/CISfp8Xti', //anshul123
+    role: 'user'
   }
 ];
 

@@ -1,7 +1,6 @@
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const usersDataBase = require("../model/userDatabase")
-const JWT_SECRET = process.env.SECRET_KEY
 
 
 //signup API
@@ -85,7 +84,7 @@ const login = async (req,res) => {
             email , 
             role : user.role 
         }
-        const token = jwt.sign(userPayload , SECRET_KEY , {
+        const token = jwt.sign(userPayload , process.env.SECRET_KEY , {
             expiresIn : "1h"
         }); 
 
