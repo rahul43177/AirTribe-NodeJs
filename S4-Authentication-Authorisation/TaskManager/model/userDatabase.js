@@ -17,26 +17,24 @@ const usersDataBase = [
     role: "user",
   },
   {
-    id: 1765027496457,
-    name: "niku piku",
-    email: "nikupiku@gmail.com",
-    password:
-      "$2b$10$5soE1bt1bKjuuH9hw2YilucilibZTDvjeZmk7DKH4zK8yU/UM7AhK", //nikupiku123
-    role: "user",
+    id: 3,
+    name: 'Kutdu Putdu',
+    email: 'kutduputdu@gmail.com',
+    password: '$2b$10$QZTzBGZc6qrWP3OIqBCeTeqMv2TTj6Lz/iqNx0QPenuUWe.u4Mtdy', // kutduputdu123
+    role: 'user'
   },
   {
-    id: 1765028129578,
+    id: 4,
     name: 'Rusk Mishra Acharya',
     email: 'rusk@gmail.com',
     password: '$2b$10$JtQhogKUhnZhTEEv1sP/quVGMXL8dcgMocShIdDB48f/NQgxklxp2', //rust1234
     role: 'admin'
   } ,
   {
-    id: 1765028184851,
-    name: 'kutdu putdu',
-    email: 'kutduputdu@gmail.com',
-    password: '$2b$10$6aQlEUUSh1NgygKDYh9kEeTSwywqMnO02lOKMH62/066MgorVhQRu', //i 
-
+    id: 5,
+    name: 'Kutdu Putdu',
+    
+    password: '$2b$10$6aQlEUUSh1NgygKDYh9kEeTSwywqMnO02lOKMH62/066MgorVhQRu', //kutduputdu123
     role: 'user'
   } ,
   {

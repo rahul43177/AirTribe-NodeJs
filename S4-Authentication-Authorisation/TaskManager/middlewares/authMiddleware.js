@@ -14,17 +14,18 @@ async function authenticateToken(req,res,next) {
                 message : "The token is not present in headers" 
             })
         }
-        authToken = authToken.split(" ")[1]; //splitting it based on the space and taking the 1st index which means second part of the array 
-        
+        if(authToken.includes(" ")) { 
+            authToken = authToken.split(" ")[1]; //splitting it based on the space and taking the 1st index which means second part of the array 
+        }
+
         const decode = jwt.verify(authToken , SECRET_KEY); 
-        console.log("the decoded payload :",decode); 
 
         req.userData = decode; 
         next()
     } catch(error) {
         return res.status(401).json({
             status : false , 
-            message : "Invalid or expired password",  
+            message : "Invalid or expired token",  
             error : error.message
         })
     }
