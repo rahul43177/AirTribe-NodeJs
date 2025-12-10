@@ -21,5 +21,39 @@ const myTasks = async (req , res) => {
     }
 }
 
+const createTask = async (req,res) => {
+    try { 
+        const {title , description} = req.body; 
+        const userData= req.userData; 
+        console.log("userdata" , userData);
+        if(!title || !description) {
+            return res.status(400).json({
+                status : false , 
+                message : "Title and description fields are required."
+            })
+        }
 
-module.exports = {myTasks}; 
+        let taskData = {
+            userId : userData.userId , 
+            id : tasksDatabase.length + 1, 
+            task : title , 
+            description 
+        }
+
+        tasksDatabase.push(taskData) ;
+        return res.status(201).json({
+            status : true , 
+            message : "The task added successfully" ,
+            newTask : taskData 
+        })
+
+    } catch(error) {
+        return res.status(500).json({
+            status : false , 
+            message : error.message 
+        })
+    }
+}
+
+
+module.exports = {myTasks , createTask}; 

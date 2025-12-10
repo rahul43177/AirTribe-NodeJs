@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 
 //routes 
-app.use("/auth" , authRouter)
+app.use("/users" , authRouter)
 app.use("/tasks", taskRouter); 
 
 app.listen(process.env.PORT , () => {
