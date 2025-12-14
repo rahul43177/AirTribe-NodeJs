@@ -8,8 +8,8 @@ const app = express();
 app.use(express.json());
 
 //routes 
-app.use("/users" , authRouter)
-app.use("/tasks", taskRouter); 
+app.use("/users/" , authRouter)
+app.use("/tasks/", taskRouter); 
 
 app.listen(process.env.PORT , () => {
   console.log("The server is running on the PORT :",process.env.PORT);
