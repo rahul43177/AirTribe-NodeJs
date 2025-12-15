@@ -52,7 +52,7 @@ const asyncFunction2 = () => {
     setTimeout(() => {
       console.log("Async function 2");
       resolve(2);
-    }, 1000);
+    }, 2000);
   });
 };
 
@@ -61,7 +61,7 @@ const asyncFunction3 = () => {
     setTimeout(() => {
       console.log("Async function 3");
       resolve(3);
-    }, 1000);
+    }, 3000);
   });
 };
 //developer
@@ -102,12 +102,12 @@ const main = () => {
 
   //running these promises or functions simultaneously
 
-  const all = Promise.all([
+  const all = Promise.race([
     asyncFunction1(),
     asyncFunction2(),
     asyncFunction3(),
   ]);
-  console.log("all", all);
+  console.log("all----", all);
 
   all.then((res) => {
     console.log(res);
