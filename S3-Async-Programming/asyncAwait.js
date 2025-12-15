@@ -1,5 +1,4 @@
 /*
-
 Call back function -> Promises
 const asyncFunction1 = (cb) => {
     setTimeout(() => {
@@ -42,7 +41,7 @@ const asyncFunction1 = () => {
   const prom = new Promise((resolve, reject) => {
     setTimeout(() => {
       console.log("Async function 1");
-      resolve();
+      resolve(1);
     }, 1000);
   });
   return prom;
@@ -52,9 +51,8 @@ const asyncFunction2 = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       console.log("Async function 2");
-      resolve();
-    }, 1000);
-
+      resolve(2);
+    }, 2000);
   });
 };
 
@@ -62,34 +60,23 @@ const asyncFunction3 = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       console.log("Async function 3");
-      resolve();
-    }, 1000);
+      resolve(3);
+    }, 3000);
   });
 };
-//developer
 
-const main = () => {
-  console.log("Start");
+const sum = async (a,b) => a+b;
 
-  asyncFunction1()
-    .then(() => {
-      asyncFunction2()
-        .then(() => {
-          asyncFunction3()
-            .then(() => {
-                console.log("All Done")
-            })
-            .catch(() => {
-              console.log("asyncFunction3 failed. ");
-            });
-        })
-        .catch(() => {
-          console.log("asyncFunction2 Failed.");
-        });
-    })
-    .catch(() => {
-      console.log("asyncFunction1 Failed");
-    });
-};
+
+const main = async () => {
+    let result ; 
+
+    try { 
+        result = await sum(1,2); 
+    } catch(error) {
+        console.log("error :",error); 
+    }
+    console.log(result); 
+}
 
 main();
