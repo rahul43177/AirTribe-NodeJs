@@ -26,21 +26,47 @@
 
 
 //example 3 : 
-setTimeout(() => {
-    console.log("Timer 1")
-    Promise.resolve().then(() => {
-        console.log("Resolved inner promise")
-    })
-},0)
+// setTimeout(() => {
+//     console.log("Timer 1")
+//     Promise.resolve().then(() => {
+//         console.log("Resolved inner promise")
+//     })
+// },0)
 
-setTimeout(() => {
-    console.log("Timer 2")
-},0)
+// setTimeout(() => {
+//     console.log("Timer 2")
+// },0)
 
-console.log("Main script")
+// console.log("Main script")
 
 
 // Main script
 // Timer 1
 // Resolved inner promise
 // Timer 2
+
+
+function wrappedPromise() {
+    return new Promise((resolve) => {
+        console.log("Inside Promise Executor.")
+    
+        process.nextTick(() => {
+            console.log("process.nextTick inside Promise");
+        })
+    
+
+        setTimeout(() => {
+            console.log("setTimeout inside promise")
+        },0);
+    
+        Promise.resolve().then(() => {
+            console.log("Promise.then inside Promise")
+        })
+    })
+}
+
+
+wrappedPromise().then((val) => console.log("Promise then :",val)); 
+
+console.log("EOS")
+
